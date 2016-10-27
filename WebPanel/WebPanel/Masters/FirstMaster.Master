@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FirstMaster.master.cs" Inherits="WebPanel.Masters.FirstMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" style="overflow: auto">
+    <head runat="server">
+        <title>MyMySQL Database</title>
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+        <style type="text/css">
+            td {
+                text-align:center;
+            }
+            div.nav {
+                background-color: lightblue;
+                padding: 20px;
+                width: 160px;
+                align-content:center;
+            }
+        </style>
+        <!--Tarvitaan, jos käyttää jquery komponenttia onclick...-->
+        <!--script-- type="text/javascript">
+            $(function () {
+                dlg.parent().appendTo(jQuery("form:first"));
+            });
+        </!--script-->
+    </head>
+    <body style="width: 800px; position: center; ">
+        <form id="form1" runat="server">
+            <h1 style="text-align:center">Welcome to MyMySQL Database!</h1>
+            <div style="position: static; float: left; width: 600px; text-align: center">
+                <!--Uskomatonta, mutta totta, asp käyttää pääosin html palikoita!-->
+                <asp:Login ID="Login" runat="server"
+                    OnAuthenticate="Login_Authenticate" VisibleWhenLoggedIn="False"
+                    DisplayRememberMe="false" Visible="false"
+                    BackColor="LightBlue" LoginButtonStyle-BackColor="Wheat"
+                    TitleText="Login to MyMySQL" DestinationPageUrl="~/Websites/About.aspx"
+
+                    LoginButtonText="Login" />
+
+                <table id="Register" style="width: 300px; background-color:lightblue;" runat="server" visible="false">
+                    <tr>
+                        <td colspan="2">Welcome to MyMySQL family!</td>
+                    </tr><tr>
+                        <td>Username</td>
+                        <td><asp:TextBox ID="newUser" runat="server" /></td>
+                    </tr><tr>
+                        <td>Password</td>
+                        <td><asp:TextBox ID="newPassword" runat="server" TextMode="Password" /></td>
+                    </tr><tr>
+                        <td>Password again</td>
+                        <td><asp:TextBox ID="TextBox1" runat="server" TextMode="Password" /></td>
+                    </tr><tr>
+                        <td>Email</td>
+                        <td><asp:TextBox ID="TextBox2" runat="server" TextMode="Password" /></td>
+                    </tr><tr>
+                        <td>Security question</td>
+                        <td><asp:TextBox ID="TextBox3" runat="server" TextMode="Password" /></td>
+                    </tr><tr>
+                        <td>Security answer</td>
+                        <td><asp:TextBox ID="TextBox4" runat="server" TextMode="Password" /></td>
+                    </tr><tr>
+                        <td colspan="2">
+                            <asp:Button Text="Create user" runat="server" />
+                            <asp:Button Text="Cancel" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+
+                <asp:ContentPlaceHolder ID="main" runat="server" />
+            </div>
+            <div class="nav" style="float: right;">
+                <asp:Button ID="Button1" PostBackUrl="~/Websites/Frontpage.aspx" runat="server" Text="Home" OnClick="Button1_Click" /><br />
+                <asp:Button ID="Button2" runat="server" Text="Login" OnClick="Button2_Click" /><br />
+                <asp:Button ID="Button3" runat="server" Text="Register" OnClick="Button3_Click" /><br />
+                <asp:Button ID="Button4" PostBackUrl="~/Websites/About.aspx" runat="server" Text="About" OnClick="Button4_Click" /><br />
+            </div>
+        </form>
+    </body>
+</html>
