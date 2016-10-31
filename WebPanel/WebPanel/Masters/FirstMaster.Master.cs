@@ -11,7 +11,8 @@ namespace WebPanel.Masters
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //TODO Login check!
+            //if()
         }
 
         private Boolean CheckLogin(String username, String password)

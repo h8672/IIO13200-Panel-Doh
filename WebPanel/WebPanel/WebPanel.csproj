@@ -81,6 +81,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\LoginClass.cs" />
     <Compile Include="Masters\FirstMaster.Master.cs">
       <DependentUpon>FirstMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,7 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Browsers\" />
-    <Folder Include="BL\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
