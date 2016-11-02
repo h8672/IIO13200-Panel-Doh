@@ -34,7 +34,7 @@
                     OnAuthenticate="Login_Authenticate" VisibleWhenLoggedIn="False"
                     DisplayRememberMe="false" Visible="false"
                     BackColor="LightBlue" LoginButtonStyle-BackColor="Wheat"
-                    TitleText="Login to MyMySQL" DestinationPageUrl="~/Websites/About.aspx"
+                    TitleText="Login to MyMySQL"
 
                     LoginButtonText="Login" />
 
