@@ -4,31 +4,35 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebPanel.BL;
 
 namespace WebPanel.Masters
 {
     public partial class FirstMaster : System.Web.UI.MasterPage
     {
+        private LoginClass logg;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session.IsNewSession) Session.Add("loginname", "");
             //TODO If someone is logged in, forward page to user pages with user masterpage.
-            if (!(Session["loginname"] == "")) ;
+            //if (!(Session["loginname"] == "")) ;
 
             //"~/Websites/FrontPage.aspx";
         }
 
-        private Boolean CheckLogin(String username, String password)
+        private Boolean CheckLogin()
         {
+            if(logg == null) logg = new LoginClass("D:/H8672/users.xml");
             //TODO Check login names and passwords from local xml file!
-
-            return true;
+            String str = logg.Login(Login.UserName.ToString(), Login.Password.ToString());
+            Login.UserNameLabelText = str;
+            return logg.LoggedIn;
         }
 
         protected void Login_Authenticate(object sender, AuthenticateEventArgs e)
         {
             //Check username and password
-            e.Authenticated = CheckLogin(Login.UserName, Login.Password);
+            e.Authenticated = CheckLogin();
 
             //If login failed
             if (!e.Authenticated) return;

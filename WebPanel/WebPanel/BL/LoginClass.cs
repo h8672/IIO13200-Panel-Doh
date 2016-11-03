@@ -12,6 +12,7 @@ namespace WebPanel.BL
         private Boolean logged;
         private String loginname;
         private String path;
+        private String msg;
         //TODO huhu
         public String Loginname
         {
@@ -23,8 +24,9 @@ namespace WebPanel.BL
             get { return logged; }
         }
 
-        LoginClass(String path)
+        public LoginClass(String path)
         {
+            msg = "";
             this.path = path;
             //TODO LoginClass
             if (!File.Exists(this.path))
@@ -39,7 +41,14 @@ namespace WebPanel.BL
                             "<securityAnswer>SecurityAnswer</securityAnswer>",
                         "</user>",
                     "</users>" };
-                File.WriteAllLines(this.path, contents);
+                try
+                {
+                    File.WriteAllLines(this.path, contents);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
 
@@ -47,15 +56,16 @@ namespace WebPanel.BL
         {
             if (!LoggedIn)
             {
+                //Did login success?
                 logged = TryLogin(username, password);
-                if (logged)
+                if (LoggedIn)
                 {
                     this.loginname = username;
                     return "Login successful!";
                 }
-                else return "Wrong username or password!";
+                else return "Wrong username or password! " + this.msg;
             }
-            else return "You have already logged in!";
+            else return "You have already logged in! " + this.msg;
         }
 
         private Boolean TryLogin(String username, String password)
@@ -64,21 +74,28 @@ namespace WebPanel.BL
             XmlDocument doc = new XmlDocument();
             if (!File.Exists(this.path)) return false;
             doc.Load(this.path);
-            XmlNodeList nodes = doc.SelectNodes("/users/");
+            XmlNodeList nodes = doc.SelectNodes("/users/user");
             Boolean found = false;
             foreach (XmlNode item in nodes){
-                if (item["user"] != null)
+                if (item != null)
                 {
-                    if(item.ChildNodes.Item(0).ToString() == username && item.ChildNodes.Item(1).ToString() == password)
+                    if(item["username"].InnerText == username && item["password"].InnerText == password)
                     {
                         //User exists with that username, password combination!
                         found = true;
+                        msg += "Found user\n";
                     }
-
+                    msg += "Did not find user\n " + item.ChildNodes.Item(0).InnerText;
                 }
             }
             //If successful
             return found;
+        }
+
+        public LinkedList<String> getSavedSQL()
+        {
+            //TODO return saved lists
+            return null;
         }
     }
 }
