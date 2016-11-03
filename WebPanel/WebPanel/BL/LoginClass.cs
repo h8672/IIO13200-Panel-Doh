@@ -84,6 +84,11 @@ namespace WebPanel.BL
                         //User exists with that username, password combination!
                         found = true;
                         msg += "Found user\n";
+                        XmlNodeList nods = item["servers"].ChildNodes;
+                        foreach (XmlNode itemm in nods)
+                        {
+
+                        }
                     }
                     msg += "Did not find user\n " + item.ChildNodes.Item(0).InnerText;
                 }

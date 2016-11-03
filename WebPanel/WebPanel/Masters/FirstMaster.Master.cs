@@ -13,7 +13,13 @@ namespace WebPanel.Masters
         private LoginClass logg;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.IsNewSession) Session.Add("loginname", "");
+            if (Session.IsNewSession)
+            {
+                //Username
+                Session.Add("loginname", "");
+                //MySQL servername, under filepath/loginname/servers.xml? no, better have inside user information...
+                Session.Add("Server", "");
+            }
             //TODO If someone is logged in, forward page to user pages with user masterpage.
             //if (!(Session["loginname"] == "")) ;
 
