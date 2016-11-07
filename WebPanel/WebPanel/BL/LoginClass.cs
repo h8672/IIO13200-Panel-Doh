@@ -13,6 +13,8 @@ namespace WebPanel.BL
         private String loginname;
         private String path;
         private String msg;
+        private LinkedList<string> servers;
+
         //TODO huhu
         public String Loginname
         {
@@ -39,6 +41,8 @@ namespace WebPanel.BL
                             "<email>Email@Email.com</email>",
                             "<securityQuestion>SecurityQuestion</securityQuestion>",
                             "<securityAnswer>SecurityAnswer</securityAnswer>",
+                            "<servers>",
+                            "</servers>",
                         "</user>",
                     "</users>" };
                 try
@@ -85,9 +89,17 @@ namespace WebPanel.BL
                         found = true;
                         msg += "Found user\n";
                         XmlNodeList nods = item["servers"].ChildNodes;
+                        //servers linkedlist initialize
+                        servers = new LinkedList<string>();
                         foreach (XmlNode itemm in nods)
                         {
-
+                            if (itemm != null)
+                            {
+                                //TODO List servers to LinkedList<String> and read them with getSavedSQL() function
+                                servers.AddLast(itemm.InnerText);
+                                msg += "Found server!\n";
+                            }
+                            else msg += "Did not find server for this user!\n";
                         }
                     }
                     msg += "Did not find user\n " + item.ChildNodes.Item(0).InnerText;
@@ -97,10 +109,10 @@ namespace WebPanel.BL
             return found;
         }
 
-        public LinkedList<String> getSavedSQL()
+        public LinkedList<string> getSavedSQL()
         {
             //TODO return saved lists
-            return null;
+            return this.servers;
         }
     }
 }

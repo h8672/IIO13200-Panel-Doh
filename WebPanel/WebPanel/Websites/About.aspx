@@ -3,4 +3,5 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
     <h1>About page</h1>
+    <asp:DataGrid ID="gridSQL" runat="server" />
 </asp:Content>
