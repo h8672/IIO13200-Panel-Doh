@@ -17,8 +17,10 @@ namespace WebPanel.Masters
             {
                 //Username
                 Session.Add("loginname", "");
-                //MySQL servername, under filepath/loginname/servers.xml? no, better have inside user information...
-                Session.Add("Server", "");
+                //MySQL server name selected from servers list
+                Session.Add("Server", 0);
+                //MySQL server names
+                Session.Add("Servers", "");
             }
             //TODO If someone is logged in, forward page to user pages with user masterpage.
             //if (!(Session["loginname"] == "")) ;
@@ -43,19 +45,20 @@ namespace WebPanel.Masters
             //If login failed
             if (!e.Authenticated) return;
             //Give session information that you have logged in
-            Session["loginname"] = Login.UserName;
+            Session["loginname"] = Login.UserName.ToString();
+            //TODO SecondMaster to route these things..
+            Session["Servers"] = logg.getSavedSQL();
             //Hide login button if login was succesful
             Button2.Visible = false;
             //TODO change destination elsewhere...
             Login.DestinationPageUrl = "~/Websites/FrontPage.aspx";
         }
-       
 
+        #region Buttons
         protected void Button1_Click(object sender, EventArgs e)
         {
             //Loads Frontpage
         }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
             //Show Login and hide contents
@@ -63,7 +66,6 @@ namespace WebPanel.Masters
             Register.Visible = false;
             Login.Visible = true;
         }
-
         protected void Button3_Click(object sender, EventArgs e)
         {
             //Show Register and hide contents
@@ -75,5 +77,6 @@ namespace WebPanel.Masters
         {
             //Loads Aboutpage
         }
+        #endregion
     }
 }
