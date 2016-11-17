@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml;
+using System.Xml.Linq;
 using System.IO;
 
 namespace WebPanel.BL
@@ -28,27 +29,26 @@ namespace WebPanel.BL
         {
             msg = "";
             this.path = path;
+
             //TODO LoginClass
             if (!File.Exists(this.path))
             {
-                String[] contents = {
-                    "<users>",
-                        "<user>",
-                            "<username>Test</username>",
-                            "<password>me</password>",
-                            "<email>Email@Email.com</email>",
-                            "<securityQuestion>SecurityQuestion</securityQuestion>",
-                            "<securityAnswer>SecurityAnswer</securityAnswer>",
-                        "</user>",
-                    "</users>" };
-                try
-                {
-                    File.WriteAllLines(this.path, contents);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                //LINQ documentin teko
+                XDocument doc = new XDocument(
+                    new XElement("users",
+                        new XElement("user",
+                            new XElement("username", "Test"),
+                            new XElement("password", "me"),
+                            new XElement("email", "Email@Email.com"),
+                            new XElement("securityQuestion", "SecurityQuestion"),
+                            new XElement("securityAnswer", "SecurityAnswer"),
+                            new XElement("servers",
+                                new XElement("server",
+                                    new XElement("name", "jamk mysql"),
+                                    new XElement("url", "mysql.labranet.jamk.fi")
+                                    )))));
+                //Tallenna documentti
+                doc.Save(path);
             }
         }
 
@@ -71,8 +71,8 @@ namespace WebPanel.BL
         private Boolean TryLogin(String username, String password)
         {
             //TODO Check username and password from xml file!
-            XmlDocument doc = new XmlDocument();
             if (!File.Exists(this.path)) return false;
+            XmlDocument doc = new XmlDocument();
             doc.Load(this.path);
             XmlNodeList nodes = doc.SelectNodes("/users/user");
             Boolean found = false;
@@ -84,11 +84,6 @@ namespace WebPanel.BL
                         //User exists with that username, password combination!
                         found = true;
                         msg += "Found user\n";
-                        XmlNodeList nods = item["servers"].ChildNodes;
-                        foreach (XmlNode itemm in nods)
-                        {
-
-                        }
                     }
                     msg += "Did not find user\n " + item.ChildNodes.Item(0).InnerText;
                 }
@@ -97,10 +92,10 @@ namespace WebPanel.BL
             return found;
         }
 
-        public LinkedList<String> getSavedSQL()
-        {
-            //TODO return saved lists
-            return null;
-        }
+
+
     }
+
+
+
 }

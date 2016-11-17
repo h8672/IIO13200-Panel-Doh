@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\LoginClass.cs" />
+    <Compile Include="BL\UserDataClass.cs" />
     <Compile Include="Masters\FirstMaster.Master.cs">
       <DependentUpon>FirstMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
