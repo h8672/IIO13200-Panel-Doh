@@ -11,8 +11,9 @@ namespace WebPanel.Websites
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["loginname"] != "")
-                gridSQL.DataSource = ((LinkedList<string>)Session["Servers"]).ToList();
+            //TODO something? not sure anymore...
+            if (Session["loginname"] != "") ;
+                //gridSQL.DataSource = ((LinkedList<string>)Session["Servers"]).ToList();
         }
     }
 }

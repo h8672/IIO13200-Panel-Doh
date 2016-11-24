@@ -14,7 +14,11 @@ namespace WebPanel.Websites
         protected void Page_Load(object sender, EventArgs e)
         {
             //lblUser.Text = Session.Count.ToString();
-            lblUser.Text = (String) Session["loginname"];
+            if((String) Session["loginname"] != "")
+            {
+                spanUser.InnerHtml = string.Format(" {0}", Session["loginname"]);
+                infoUserless.Visible = false;
+            }
         }
     }
 }

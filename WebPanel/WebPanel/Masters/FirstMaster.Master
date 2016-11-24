@@ -69,13 +69,17 @@
                 </table>
 
                 <asp:ContentPlaceHolder ID="main" runat="server" />
-            </div><div class="nav w3-third">
+            </div><div class="nav w3-third w3-center">
+                <!--Nav bar-->
                 <div class="w3-section">
-                    <asp:Button CssClass="w3-btn-block w3-dark-grey" ID="Button1" PostBackUrl="~/Websites/Frontpage.aspx" runat="server" Text="Home" OnClick="Button1_Click" /><br />
-                    <asp:Button CssClass="w3-btn-block w3-dark-grey" ID="Button4" PostBackUrl="~/Websites/About.aspx" runat="server" Text="About" OnClick="Button4_Click" /><br />
+                    <asp:Button ID="Button1" Text="Home" PostBackUrl="~/Websites/Frontpage.aspx" CssClass="w3-btn-block w3-dark-grey" OnClick="Button1_Click" runat="server" /><br />
+                    <asp:Button ID="Button4" Text="About" PostBackUrl="~/Websites/About.aspx" CssClass="w3-btn-block w3-dark-grey" OnClick="Button4_Click" runat="server" /><br />
                 </div><div class="w3-section">
-                    <asp:Button CssClass="w3-btn-block w3-dark-grey" ID="Button2" runat="server" Text="Login" OnClick="Button2_Click" /><br />
-                    <asp:Button CssClass="w3-btn-block w3-dark-grey" ID="Button3" runat="server" Text="Register" OnClick="Button3_Click" /><br />
+                    <asp:Button ID="Button5" Visible="false" Text="Logout" PostBackUrl="~/Websites/Frontpage.aspx" CssClass="w3-btn-block w3-dark-grey" OnClick="Button5_Click" runat="server" /><br />
+                    <asp:Button ID="Button2" Text="Login" CssClass="w3-btn-block w3-dark-grey" OnClick="Button2_Click" runat="server" /><br />
+                    <asp:Button ID="Button3" Text="Register" CssClass="w3-btn-block w3-dark-grey" OnClick="Button3_Click" runat="server" /><br />
+                </div><div class="w3-section">
+                    <asp:ContentPlaceHolder ID="extrasidenav" runat="server" />
                 </div>
             </div>
         </form>

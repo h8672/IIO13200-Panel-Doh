@@ -1,0 +1,18 @@
+﻿Tänne tulee pieni tekstipohjainen taulukko, josta näkee että missä mitäkin käytetään
+
+Session muuttujat!
+- loginname
+- Servers
+- Server*
+- Database*
+- Table*
+
+* Muistaa listan sisällön sijainnin numerona tekstiformaatissa
+
+
+Alustetaan FirstMaster.Master.cs:
+- Load_Page
+Nollataan FirstMaster.Master.cs:
+- Button5_Click
+
+
