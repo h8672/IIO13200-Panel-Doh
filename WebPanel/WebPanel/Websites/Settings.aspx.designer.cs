@@ -10,114 +10,87 @@
 namespace WebPanel.Websites {
     
     
-    public partial class SQLview {
+    public partial class Settings {
         
         /// <summary>
-        /// tabMenu control.
+        /// tbServerUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu tabMenu;
+        protected global::System.Web.UI.WebControls.TextBox tbServerUrl;
         
         /// <summary>
-        /// ddlDatabases control.
+        /// btnSaveServer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDatabases;
+        protected global::System.Web.UI.WebControls.Button btnSaveServer;
         
         /// <summary>
-        /// ddlTables control.
+        /// btnEditServer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTables;
+        protected global::System.Web.UI.WebControls.Button btnEditServer;
         
         /// <summary>
-        /// MultiView control.
+        /// btnDeleteServer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiView;
+        protected global::System.Web.UI.WebControls.Button btnDeleteServer;
         
         /// <summary>
-        /// Tab1 control.
+        /// tbOldPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View Tab1;
+        protected global::System.Web.UI.WebControls.TextBox tbOldPassword;
         
         /// <summary>
-        /// Tab2 control.
+        /// tbReOldPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View Tab2;
+        protected global::System.Web.UI.WebControls.TextBox tbReOldPassword;
         
         /// <summary>
-        /// Tab3 control.
+        /// btnChangePassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View Tab3;
+        protected global::System.Web.UI.WebControls.Button btnChangePassword;
         
         /// <summary>
-        /// ddlDatabase control.
+        /// tbEmailChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDatabase;
+        protected global::System.Web.UI.WebControls.TextBox tbEmailChange;
         
         /// <summary>
-        /// ddlTable control.
+        /// btnEmailChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTable;
-        
-        /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
-        
-        /// <summary>
-        /// btnEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
-        
-        /// <summary>
-        /// btnRemove control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRemove;
+        protected global::System.Web.UI.WebControls.Button btnEmailChange;
     }
 }

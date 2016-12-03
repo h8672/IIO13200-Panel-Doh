@@ -86,6 +86,7 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Masters\FirstMaster.Master" />
+    <Content Include="Websites\Settings.aspx" />
     <Content Include="Websites\SQLview.aspx" />
     <None Include="Tiedot" />
     <Content Include="Websites\About.aspx" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="Websites\Frontpage.aspx.designer.cs">
       <DependentUpon>Frontpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Websites\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Websites\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Websites\SQLview.aspx.cs">
       <DependentUpon>SQLview.aspx</DependentUpon>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Xml;
 using System.Web;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WebPanel.BL
 {
@@ -22,7 +24,7 @@ namespace WebPanel.BL
         }
         #endregion
 
-        #region UserDataMethods
+        #region UserLocalDataMethods
         public LinkedList<KeyValuePair<String, String>> getUserServers(String username, String path)
         {
             //Return saved servers from xml file
@@ -79,5 +81,78 @@ namespace WebPanel.BL
             }
         }
         #endregion
+
+        #region UserServerDataMethods
+        //TODO injection defenses on all methods!
+
+        public List<String> getDatabases(String url, String username, String password)
+        {
+            //Get databases from MySQL server http://stackoverflow.com/questions/12862604/c-sharp-connect-to-database-and-list-the-databases
+            String connectionStr =
+                "Data Source=" + url + ";" +
+                "User ID=" + username + ";" +
+                "Password=" + password + ";" +
+                "Integrated Security=True;";
+            List<String> lists = new List<string>();
+            using (var con = new SqlConnection(connectionStr))
+            {
+                con.Open();
+                DataTable data = con.GetSchema("Databases");
+                foreach (DataRow row in data.Rows)
+                {
+                    String databaseName = row.Field<String>("database_name");
+                    lists.Add(databaseName);
+                }
+            }
+            return lists;
+        }
+
+        public List<String> getTables(String url, String username, String password)
+        {
+            //Get databases from MySQL server http://stackoverflow.com/questions/12862604/c-sharp-connect-to-database-and-list-the-databases
+            String connectionStr =
+                "Data Source=" + url + ";" +
+                "User ID=" + username + ";" +
+                "Password=" + password + ";" +
+                "Integrated Security=True;";
+            List<String> lists = new List<string>();
+            using (var con = new SqlConnection(connectionStr))
+            {
+                con.Open();
+                DataTable data = con.GetSchema("Tables");
+                foreach (DataRow row in data.Rows)
+                {
+                    String tableName = row.Field<String>("database_name");
+                    lists.Add(tableName);
+                }
+            }
+            return lists;
+        }
+
+        /*
+            String connectionStr, viesti, taulu;
+            connectionStr = "Data Source="+url+";Initial Catalog=master;User ID=koodari;Password=koodari16" providerName = "System.Data.SqlClient";
+            taulu = "Tablename";
+            try
+            {
+                SqlConnection myConn = new SqlConnection(connectionStr);
+                myConn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM " + taulu, myConn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds, taulu);
+                viesti = "Tiedot haettu onnistuneesti tietokannasta " + myConn.DataSource;
+                return ds.Tables[taulu];
+            }
+            catch (Exception ex)
+            {
+                viesti = ex.Message;
+                throw;
+            }
+            return databases;
+    */
+
+        #endregion
+
     }
 }
