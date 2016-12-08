@@ -11,6 +11,7 @@ namespace WebPanel.Masters
     public partial class FirstMaster : System.Web.UI.MasterPage
     {
         private LoginClass logg;
+        private String path = "D:/H8672/users.xml";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session.IsNewSession)
@@ -58,6 +59,7 @@ namespace WebPanel.Masters
             //EXPLANATION No longer page forward needed, decided to use this same master here
             //if (!(Session["loginname"] == "")) ;
 
+            if (logg == null) logg = new LoginClass(path);
             //"~/Websites/FrontPage.aspx";
         }
 
@@ -73,7 +75,7 @@ namespace WebPanel.Masters
 
         private Boolean CheckLogin()
         {
-            if (logg == null) logg = new LoginClass("D:/H8672/users.xml");
+            if (logg == null) logg = new LoginClass(path);
             //TODO Check login names and passwords from local xml file!
             String str = logg.Login(Login.UserName.ToString(), Login.Password.ToString());
             Login.UserNameLabelText = str;
@@ -96,16 +98,17 @@ namespace WebPanel.Masters
         }
         protected void ButtonRegister(object sender, EventArgs e)
         {
-            //Register user to xml file
             List<String> newRegister = new List<string>();
-            if(Register.newPassword.ToString() == Register.newPassword2.ToString())
+            //Register user to xml file
+            if (newPassword.ToString() == newPassword2.ToString())
             {
                 //Okay, new password is written twice correctly, works for me for now
-                newRegister.Add(Register.newUser.ToString());
-                newRegister.Add(Register.newPassword.ToString());
-                newRegister.Add(Register.newEmail.ToString());
-                newRegister.Add(Register.newQuestion.ToString());
-                newRegister.Add(Register.newAnswer.ToString());
+                newRegister.Add(newUser.Text);
+                newRegister.Add(newPassword.Text);
+                newRegister.Add(newEmail.Text);
+                newRegister.Add(newQuestion.Text);
+                newRegister.Add(newAnswer.Text);
+                logg.RegisterUser(path, newRegister);
             }
         }
         protected void ButtonDontRegister(object sender, EventArgs e)

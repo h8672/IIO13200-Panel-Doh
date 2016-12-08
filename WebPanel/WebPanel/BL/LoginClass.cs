@@ -60,20 +60,21 @@ namespace WebPanel.BL
 
             //Create data
             XElement userNode = new XElement("user",
-                new XElement("username", userdata.Select(0),
-                new XElement("password", userdata.Select(1)),
-                new XElement("email", userdata.Select(2)),
-                new XElement("securityQuestion", userdata.Select(3)),
-                new XElement("securityAnswer", userdata.Select(4)),
+                new XElement("username", userdata.ElementAt(0)),
+                new XElement("password", userdata.ElementAt(1)),
+                new XElement("email", userdata.ElementAt(2)),
+                new XElement("securityQuestion", userdata.ElementAt(3)),
+                new XElement("securityAnswer", userdata.ElementAt(4)),
                 new XElement("servers",
                     new XElement("server",
                         new XElement("name", "None"),
                         new XElement("url", "None")
-                        ))));
+                        )));
             doc.Descendants("users").Single().Add(userNode);
 
             //Save changes
             doc.Save(path);
+            return true;
         }
 
         public String Login(String username, String password)
