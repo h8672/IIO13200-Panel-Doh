@@ -41,8 +41,10 @@ namespace WebPanel.Websites
                     */
                     //Syötetään data näkyville
                     //gvData.DataSource = dt;
-                    gvData.DataSource = data.getUserServers((String)Session["loginname"], path);
-                    gvData.DataBind();
+                    if((String) Session["Servers"] == "")
+                        Session["Servers"] = data.getUserServers((String)Session["loginname"], path);
+                    dgData.DataSource = (DataTable) Session["Servers"];
+                    dgData.DataBind();
                     //TODO Add to dropdownlists data
                     
                 //}
@@ -54,5 +56,22 @@ namespace WebPanel.Websites
                 //Response.Redirect("~/Websites/Frontpage.aspx");
             }
         }
+
+        #region DataGrid_Methods
+        protected void dgData_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["Server"] = dgData.SelectedIndex;
+            dgData.SelectedItemStyle.BackColor = System.Drawing.Color.Aqua;
+            tbServerUrl.Text = string.Format("{0}", dgData.SelectedIndex);
+        }
+        protected void btnEditServer_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnDeleteServer_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

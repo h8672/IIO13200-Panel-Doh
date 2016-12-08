@@ -12,10 +12,10 @@
             <td colspan="2"><asp:TextBox ID="tbServerUrl" TextMode="SingleLine" runat="server" /></td>
             <td><asp:Button Text="Save" ID="btnSaveServer" runat="server" /></td>
         </tr><tr>
-            <td colspan="2"><asp:GridView ID="gvData" runat="server" /></td>
+            <td colspan="2"><asp:DataGrid ID="dgData" OnSelectedIndexChanged="dgData_SelectedIndexChanged" runat="server" /></td>
             <td>
-                <asp:Button Text="Edit" ID="btnEditServer" runat="server" /><br />
-                <asp:Button Text="Delete" ID="btnDeleteServer" runat="server" />
+                <asp:Button Text="Edit" ID="btnEditServer" OnClick="btnEditServer_Click" runat="server" /><br />
+                <asp:Button Text="Delete" ID="btnDeleteServer" OnClick="btnDeleteServer_Click" runat="server" />
             </td>
         </tr><tr>
             <th colspan="3" style="border-bottom: solid 1px">User</th>
