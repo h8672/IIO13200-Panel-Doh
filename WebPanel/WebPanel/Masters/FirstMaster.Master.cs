@@ -20,9 +20,9 @@ namespace WebPanel.Masters
 
                 //Load else once
                 Button6.Visible = false;
-                Button6.Text = "";
+                //Button6.Text = "";
                 Button7.Visible = false;
-                Button7.Text = "";
+                //Button7.Text = "";
 
                 Button5.Visible = false;
                 Button5.Text = "";
@@ -33,15 +33,15 @@ namespace WebPanel.Masters
             {
                 //Hide stuff if logged in
                 Button6.Visible = true;
-                Button6.Text = "";
+                //Button6.Text = "";
                 Button7.Visible = true;
-                Button7.Text = "";
+                //Button7.Text = "";
 
                 Button5.Visible = true;
                 Button2.Visible = false;
-                Button2.Text = "";
+                //Button2.Text = "";
                 Button3.Visible = false;
-                Button3.Text = "";
+                //Button3.Text = "";
             }
             else
             {

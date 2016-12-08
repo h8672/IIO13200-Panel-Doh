@@ -25,8 +25,9 @@ namespace WebPanel.BL
         #endregion
 
         #region UserLocalDataMethods
-        public LinkedList<KeyValuePair<String, String>> getUserServers(String username, String path)
+        public DataTable getUserServers(String username, String path)
         {
+            /*Muutos datatableks
             //Return saved servers from xml file
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
@@ -43,7 +44,24 @@ namespace WebPanel.BL
                 );
                 list.AddLast(pair);
             }
-            return list;
+            */
+
+            //Return saved servers from xml file
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+
+            //Select server nodes
+            XmlNodeList nodes = doc.SelectNodes(string.Format("users/user[username='{0}']/servers/server", username));
+            DataTable dt = new DataTable();
+            //columns
+            dt.Columns.Add("Server name", typeof(string));
+            dt.Columns.Add("Server url", typeof(string));
+            //Get server list to rows
+            foreach (XmlNode node in nodes)
+            {
+                dt.Rows.Add(node["name"].InnerXml, node["url"].InnerXml);
+            }
+            return dt;
         }
 
         //TODO Vielä tekeillä

@@ -11,6 +11,8 @@ namespace WebPanel.Websites
     public partial class SQLview : System.Web.UI.Page
     {
         private UserDataClass data;
+        private String path = "D:/H8672/users.xml";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if((String) Session["loginname"] != "")
@@ -21,7 +23,7 @@ namespace WebPanel.Websites
                 {
                     ddlDatabase.Items.Add("Empty");
                     ddlTable.Items.Add("Empty");
-                
+                    
                 }
                 //Fill dropdownlists
                 else

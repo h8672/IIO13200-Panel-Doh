@@ -31,6 +31,15 @@ namespace WebPanel.Websites {
         protected global::System.Web.UI.WebControls.Button btnSaveServer;
         
         /// <summary>
+        /// gvData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvData;
+        
+        /// <summary>
         /// btnEditServer control.
         /// </summary>
         /// <remarks>

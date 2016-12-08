@@ -9,12 +9,12 @@
                 MySQL database
             </th>
         </tr><tr>
-            <td colspan="2"><asp:TextBox Text="mysql.database.com" ID="tbServerUrl" TextMode="Url" runat="server" /></td>
+            <td colspan="2"><asp:TextBox ID="tbServerUrl" TextMode="SingleLine" runat="server" /></td>
             <td><asp:Button Text="Save" ID="btnSaveServer" runat="server" /></td>
         </tr><tr>
-            <td colspan="2"><!--Select table to select server--></td>
+            <td colspan="2"><asp:GridView ID="gvData" runat="server" /></td>
             <td>
-                <asp:Button Text="Edit" ID="btnEditServer" runat="server" />
+                <asp:Button Text="Edit" ID="btnEditServer" runat="server" /><br />
                 <asp:Button Text="Delete" ID="btnDeleteServer" runat="server" />
             </td>
         </tr><tr>
