@@ -12,7 +12,21 @@
             <td colspan="2"><asp:TextBox ID="tbServerUrl" TextMode="SingleLine" runat="server" /></td>
             <td><asp:Button Text="Save" ID="btnSaveServer" runat="server" /></td>
         </tr><tr>
-            <td colspan="2"><asp:DataGrid ID="dgData" OnSelectedIndexChanged="dgData_SelectedIndexChanged" runat="server" /></td>
+            <td colspan="2">
+                <asp:DataGrid ID="dgData"
+                    AutoGenerateColumns="true"
+                    SelectedIndex="0"
+                    OnSelectedIndexChanged="dgData_SelectedIndexChanged" OnItemCreated="dgData_ItemCreated"
+                    runat="server">
+                    <Columns>
+                        <asp:TemplateColumn HeaderText="Select">
+                            <ItemTemplate>
+                                <asp:CheckBox runat="server" OnCheckedChanged="Unnamed_CheckedChanged" />
+                            </ItemTemplate>
+                        </asp:TemplateColumn>
+                    </Columns>
+                </asp:DataGrid>
+            </td>
             <td>
                 <asp:Button Text="Edit" ID="btnEditServer" OnClick="btnEditServer_Click" runat="server" /><br />
                 <asp:Button Text="Delete" ID="btnDeleteServer" OnClick="btnDeleteServer_Click" runat="server" />

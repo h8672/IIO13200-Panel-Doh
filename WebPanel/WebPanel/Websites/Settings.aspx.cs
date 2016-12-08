@@ -29,26 +29,26 @@ namespace WebPanel.Websites
                 //Fill dropdownlists
                 else
                 {*/
-                    /*
-                    //Luetaan xml-tiedostosta tt:n tiedot ja esitetään new gvData:ssa
-                    DataSet ds = new DataSet();
-                    DataTable dt = new DataTable();
-                    //DataView ei pakollinen, mutta hieno kuulemma
-                    DataView dv = new DataView();
-                    ds.ReadXml(path);
-                    dt = ds.Tables[0];
-                    dv = dt.DefaultView;
-                    */
-                    //Syötetään data näkyville
-                    //gvData.DataSource = dt;
-                    if((String) Session["Servers"] == "")
-                        Session["Servers"] = data.getUserServers((String)Session["loginname"], path);
-                    
-                    dgData.DataSource = (DataTable) Session["Servers"];
-                    dgData.DataBind();
-                    //TODO Add to dropdownlists data
-                    //dgData.Items.Count;
-                    
+                /*
+                //Luetaan xml-tiedostosta tt:n tiedot ja esitetään new gvData:ssa
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                //DataView ei pakollinen, mutta hieno kuulemma
+                DataView dv = new DataView();
+                ds.ReadXml(path);
+                dt = ds.Tables[0];
+                dv = dt.DefaultView;
+                */
+                //Syötetään data näkyville
+                //gvData.DataSource = dt;
+                if (Session["Servers"] == null)
+                    Session["Servers"] = data.getUserServers((String)Session["loginname"], path);
+                else;
+                dgData.DataSource = ((DataTable) Session["Servers"]);
+                dgData.DataBind();
+                //TODO Add to dropdownlists data
+                //dgData.Items.Count;
+                
                 //}
 
             }
@@ -74,6 +74,15 @@ namespace WebPanel.Websites
         {
 
         }
+        protected void Unnamed_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
         #endregion
+
+        protected void dgData_ItemCreated(object sender, DataGridItemEventArgs e)
+        {
+            
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace WebPanel.Masters
             //Username
             Session.Add("loginname", "");
             //MySQL server names
-            Session.Add("Servers", "");
+            Session.Add("Servers", null);
             //MySQL server name selected from servers list
             Session.Add("Server", "0");
         }

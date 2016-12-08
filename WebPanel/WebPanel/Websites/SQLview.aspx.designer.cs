@@ -22,24 +22,6 @@ namespace WebPanel.Websites {
         protected global::System.Web.UI.WebControls.Menu tabMenu;
         
         /// <summary>
-        /// ddlDatabases control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDatabases;
-        
-        /// <summary>
-        /// ddlTables control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTables;
-        
-        /// <summary>
         /// MultiView control.
         /// </summary>
         /// <remarks>

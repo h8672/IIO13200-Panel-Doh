@@ -53,14 +53,14 @@ namespace WebPanel.BL
             //Select server nodes
             XmlNodeList nodes = doc.SelectNodes(string.Format("users/user[username='{0}']/servers/server", username));
             DataTable dt = new DataTable();
+            
             //columns
             dt.Columns.Add("Server name", typeof(string));
             dt.Columns.Add("Server url", typeof(string));
+
             //Get server list to rows
             foreach (XmlNode node in nodes)
             {
-                dt.Rows.Add(node["name"].InnerXml, node["url"].InnerXml);
-                dt.Rows.Add(node["name"].InnerXml, node["url"].InnerXml);
                 dt.Rows.Add(node["name"].InnerXml, node["url"].InnerXml);
             }
             return dt;
@@ -69,6 +69,9 @@ namespace WebPanel.BL
         //TODO Vielä tekeillä
         public void saveServersToUser(String username, String path)
         {
+            //Katso LoginClass RegisterUser metodi
+
+            //Experiment, couldn't test yet
             //return saved servers from xml file
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
@@ -99,6 +102,7 @@ namespace WebPanel.BL
                 doc.DocumentElement.AppendChild(server);
                 //TODO Hope it works...
             }
+
         }
         #endregion
 
