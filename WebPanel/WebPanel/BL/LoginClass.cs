@@ -49,7 +49,31 @@ namespace WebPanel.BL
                                     )))));
                 //Tallenna documentti
                 doc.Save(path);
+                
             }
+        }
+
+        public Boolean RegisterUser(String path, List<String> userdata)
+        {
+            //Load doc
+            XDocument doc = XDocument.Load(path);
+
+            //Create data
+            XElement userNode = new XElement("user",
+                new XElement("username", userdata.Select(0),
+                new XElement("password", userdata.Select(1)),
+                new XElement("email", userdata.Select(2)),
+                new XElement("securityQuestion", userdata.Select(3)),
+                new XElement("securityAnswer", userdata.Select(4)),
+                new XElement("servers",
+                    new XElement("server",
+                        new XElement("name", "None"),
+                        new XElement("url", "None")
+                        ))));
+            doc.Descendants("users").Single().Add(userNode);
+
+            //Save changes
+            doc.Save(path);
         }
 
         public String Login(String username, String password)

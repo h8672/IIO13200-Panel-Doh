@@ -18,41 +18,41 @@ namespace WebPanel.Masters
                 nullSessions();
 
                 //Load else once
-                Button5.Visible = false;
-                Button5.Text = "";
-                Button2.Visible = true;
-                Button3.Visible = true;
-
                 Button6.Visible = false;
                 Button6.Text = "";
                 Button7.Visible = false;
                 Button7.Text = "";
+
+                Button5.Visible = false;
+                Button5.Text = "";
+                Button2.Visible = true;
+                Button3.Visible = true;
             }
             else if ((String)Session["loginname"] != "")
             {
                 //Hide stuff if logged in
+                Button6.Visible = true;
+                Button6.Text = "";
+                Button7.Visible = true;
+                Button7.Text = "";
+
                 Button5.Visible = true;
                 Button2.Visible = false;
                 Button2.Text = "";
                 Button3.Visible = false;
                 Button3.Text = "";
-
-                Button6.Visible = true;
-                Button6.Text = "";
-                Button7.Visible = true;
-                Button7.Text = "";
             }
             else
             {
-                Button5.Visible = false;
-                Button5.Text = "";
-                Button2.Visible = true;
-                Button3.Visible = true;
-
                 Button6.Visible = false;
                 Button6.Text = "";
                 Button7.Visible = false;
                 Button7.Text = "";
+
+                Button5.Visible = false;
+                Button5.Text = "";
+                Button2.Visible = true;
+                Button3.Visible = true;
             }
             //NOTODO If someone is logged in, forward page to user pages with user masterpage.
             //EXPLANATION No longer page forward needed, decided to use this same master here
@@ -94,8 +94,26 @@ namespace WebPanel.Masters
             //TODO change destination elsewhere... maybe?
             Login.DestinationPageUrl = "~/Websites/FrontPage.aspx";
         }
+        protected void ButtonRegister(object sender, EventArgs e)
+        {
+            //Register user to xml file
+            List<String> newRegister = new List<string>();
+            if(Register.newPassword.ToString() == Register.newPassword2.ToString())
+            {
+                //Okay, new password is written twice correctly, works for me for now
+                newRegister.Add(Register.newUser.ToString());
+                newRegister.Add(Register.newPassword.ToString());
+                newRegister.Add(Register.newEmail.ToString());
+                newRegister.Add(Register.newQuestion.ToString());
+                newRegister.Add(Register.newAnswer.ToString());
+            }
+        }
+        protected void ButtonDontRegister(object sender, EventArgs e)
+        {
+            //Refresh page
+        }
 
-        #region Buttons
+        #region NavButtons
         protected void Button1_Click(object sender, EventArgs e)
         {
             //Loads Frontpage, but maynot refresh page

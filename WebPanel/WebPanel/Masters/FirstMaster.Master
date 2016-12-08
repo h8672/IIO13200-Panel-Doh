@@ -50,20 +50,20 @@
                         <td><asp:TextBox ID="newPassword" runat="server" TextMode="Password" /></td>
                     </tr><tr>
                         <td>Password again</td>
-                        <td><asp:TextBox ID="TextBox1" runat="server" TextMode="Password" /></td>
+                        <td><asp:TextBox ID="newPassword2" runat="server" TextMode="Password" /></td>
                     </tr><tr>
                         <td>Email</td>
-                        <td><asp:TextBox ID="TextBox2" runat="server" /></td>
+                        <td><asp:TextBox ID="newEmail" runat="server" /></td>
                     </tr><tr>
                         <td>Security question</td>
-                        <td><asp:TextBox ID="TextBox3" runat="server" /></td>
+                        <td><asp:TextBox ID="newQuestion" runat="server" /></td>
                     </tr><tr>
                         <td>Security answer</td>
-                        <td><asp:TextBox ID="TextBox4" runat="server" /></td>
+                        <td><asp:TextBox ID="newAnswer" runat="server" /></td>
                     </tr><tr>
                         <td colspan="2">
-                            <asp:Button Text="Create user" runat="server" />
-                            <asp:Button Text="Cancel" runat="server" />
+                            <asp:Button ID="DoRegister" Text="Create user" OnClick="ButtonRegister" runat="server" />
+                            <asp:Button ID="DontRegister" Text="Cancel" OnClick="ButtonDontRegister" runat="server" />
                         </td>
                     </tr>
                 </table>
