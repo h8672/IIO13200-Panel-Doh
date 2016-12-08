@@ -60,6 +60,8 @@ namespace WebPanel.BL
             foreach (XmlNode node in nodes)
             {
                 dt.Rows.Add(node["name"].InnerXml, node["url"].InnerXml);
+                dt.Rows.Add(node["name"].InnerXml, node["url"].InnerXml);
+                dt.Rows.Add(node["name"].InnerXml, node["url"].InnerXml);
             }
             return dt;
         }

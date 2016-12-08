@@ -43,9 +43,11 @@ namespace WebPanel.Websites
                     //gvData.DataSource = dt;
                     if((String) Session["Servers"] == "")
                         Session["Servers"] = data.getUserServers((String)Session["loginname"], path);
+                    
                     dgData.DataSource = (DataTable) Session["Servers"];
                     dgData.DataBind();
                     //TODO Add to dropdownlists data
+                    //dgData.Items.Count;
                     
                 //}
 
