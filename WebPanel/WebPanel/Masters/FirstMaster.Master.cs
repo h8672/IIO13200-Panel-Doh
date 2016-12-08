@@ -22,6 +22,11 @@ namespace WebPanel.Masters
                 Button5.Text = "";
                 Button2.Visible = true;
                 Button3.Visible = true;
+
+                Button6.Visible = false;
+                Button6.Text = "";
+                Button7.Visible = false;
+                Button7.Text = "";
             }
             else if ((String)Session["loginname"] != "")
             {
@@ -31,6 +36,11 @@ namespace WebPanel.Masters
                 Button2.Text = "";
                 Button3.Visible = false;
                 Button3.Text = "";
+
+                Button6.Visible = true;
+                Button6.Text = "";
+                Button7.Visible = true;
+                Button7.Text = "";
             }
             else
             {
@@ -38,6 +48,11 @@ namespace WebPanel.Masters
                 Button5.Text = "";
                 Button2.Visible = true;
                 Button3.Visible = true;
+
+                Button6.Visible = false;
+                Button6.Text = "";
+                Button7.Visible = false;
+                Button7.Text = "";
             }
             //NOTODO If someone is logged in, forward page to user pages with user masterpage.
             //EXPLANATION No longer page forward needed, decided to use this same master here
@@ -109,8 +124,17 @@ namespace WebPanel.Masters
         }
         protected void Button5_Click(object sender, EventArgs e)
         {
+            //Logout
             nullSessions();
             Server.TransferRequest("~/Websites/Frontpage.aspx");
+        }
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            //SQLview
+        }
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            //Settings
         }
         #endregion
 
